@@ -106,21 +106,35 @@ int main()
     printf("\nThe ID student %d : ", i + 1);
     scanf("%s", student[i].id);
 
-    printf("\nThe full name of student %d : ", i + 1);
-    scanf("%s", student[i].full_name);
+    printf("\nThe first name of student %d : ", i + 1);      //Input First Name
+    scanf("%s", student[i].first_name);
     for(int x = 0; true; x++){
-      if (isalpha((student[i].full_name)[x]) != 0){
+      if (isalpha((student[i].first_name)[x]) != 0){
+        break;
+      }
+      else{
+        printf("\nInvalid value, please type as letters");
+        printf("\nThe first name of student %d : ", i + 1);
+        scanf("%s", student[i].first_name);
+        continue;
+      }
+    }  
+  
+    printf("\nThe last name of student %d : ", i + 1);      //Input Last Name
+    scanf("%s", student[i].last_name);
+    for(int x = 0; true; x++){
+      if (isalpha((student[i].last_name)[x]) != 0){
         break;
       }
       else{
         printf("\nInvalid value, please type as letters");
         printf("\nThe full name of student %d : ", i + 1);
-        scanf("%s", student[i].full_name);
+        scanf("%s", student[i].last_name);
         continue;
       }
     }  
 
-    printf("What's your birthday(DD/MM/YYYY): ");
+    printf("What's your birthday(DD/MM/YYYY): ");        //Input Birthday
     scanf("%s", student[i].birth);
     int len = strlen(student[i].birth);
     for(int x = 0; true; x++){
@@ -150,6 +164,14 @@ int main()
     printf("The score Basic Programming of student %d : ", i + 1);
     scanf("%f", &student[i].basic);
     student[i].gpa = (student[i].al + student[i].basic + student[i].cal) / 3;
+    strupr(student[i].first_name);
+    strupr(student[i].last_name);
+    strcpy(student[i].full_name, student[i].last_name);          //Assign full name to each student by merging last name + white space + full name
+    strcat(student[i].full_name, " ");
+    strcat(student[i].full_name, student[i].first_name);
+    strupr(student[i].full_name);
+    strupr(student[i].last_name);
+    
 
   }
     
